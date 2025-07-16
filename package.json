@@ -1,6 +1,6 @@
 {
   "name": "devstat",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CLI tool to fetch coding stats from GitHub, LeetCode, and Codeforces",
   "main": "index.js",
   "bin": {
