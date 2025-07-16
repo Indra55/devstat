@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import { fetchGitHubProfile } from './modules/github.js';

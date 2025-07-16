@@ -2,8 +2,11 @@ import axios from 'axios';
 
 async function fetchGitHubProfile(username) {
   try {
-    const userResponse = await axios.get(`https://api.github.com/users/${username}`);
-    const reposResponse = await axios.get(`https://api.github.com/users/${username}/repos`);
+    const githubToken = process.env.GITHUB_TOKEN;
+    const headers = githubToken ? { Authorization: `token ${githubToken}` } : {};
+
+    const userResponse = await axios.get(`https://api.github.com/users/${username}`, { headers });
+    const reposResponse = await axios.get(`https://api.github.com/users/${username}/repos`, { headers });
 
     const languages = reposResponse.data.reduce((acc, repo) => {
       if (repo.language) {
@@ -19,6 +22,8 @@ async function fetchGitHubProfile(username) {
         acc[lang] = count;
         return acc;
       }, {});
+
+    const totalStars = reposResponse.data.reduce((sum, repo) => sum + repo.stargazers_count, 0);
 
     return { 
       login: userResponse.data.login,
@@ -53,6 +58,7 @@ async function fetchGitHubProfile(username) {
       following: userResponse.data.following,
       created_at: userResponse.data.created_at,
       updated_at: userResponse.data.updated_at,
+      totalStars,
       topLanguages, 
     };
   } catch (error) {

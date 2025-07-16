@@ -158,8 +158,10 @@ function displayProfileComparison(platform, profile1, profile2, username1, usern
       content += getComparisonLine('Following:', profile1.following, profile2.following) + '\n';
       content += getComparisonLine('Public Repos:', profile1.public_repos, profile2.public_repos) + '\n';
       content += getComparisonLine('Public Gists:', profile1.public_gists, profile2.public_gists) + '\n';
+      content += getComparisonLine('Total Stars:', profile1.totalStars, profile2.totalStars) + '\n';
       content += createComparisonBarChart('Followers', profile1.followers, profile2.followers);
       content += createComparisonBarChart('Public Repos', profile1.public_repos, profile2.public_repos);
+      content += createComparisonBarChart('Total Stars', profile1.totalStars, profile2.totalStars);
       break;
 
     case 'LeetCode':
