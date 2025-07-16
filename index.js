@@ -22,8 +22,25 @@ async function printBannerLines(text) {
     horizontalLayout: 'full',
   });
   const lines = banner.split('\n');
-  for (const line of lines) {
-    console.log(gradient.cristal(line));
+
+  
+  const catMascot = [
+    "     ,/|        *.--''^``-...*__.._.,;",
+    "    /, \\'.     _-'         ,--,,,--'''",
+    "   { \\    `_-''      '   /}",
+    "    `;;'           ;  ; ;",
+    " ._.--''    ._,,, _..'  .;.'",
+    "  (,_....----''''    (,..--''"
+  ];
+
+  
+  const mascotLines = catMascot.length;
+  const maxLines = Math.max(lines.length, mascotLines);
+  for (let i = 0; i < maxLines; i++) {
+    let line = i < lines.length ? gradient.cristal(lines[i]) : '';
+    let mascotLine = i < mascotLines ? gradient.cristal(catMascot[i]) : '';
+    const pad = line && mascotLine ? '    ' : '';
+    console.log(line + pad + mascotLine);
     await sleep(60);
   }
   console.log('\n');
@@ -60,7 +77,7 @@ async function welcome() {
 
   await printBannerLines('devstat');
 
-  console.log(chalk.gray('// Know thy code. Know thyself.\n'));
+  console.log(chalk.gray('Know thy code. Know thyself.\n'));
 }
 
 async function main() {
