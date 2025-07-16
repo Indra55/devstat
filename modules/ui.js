@@ -3,12 +3,11 @@ import gradient from 'gradient-string';
 import boxen from 'boxen';
 import chalkAnimation from 'chalk-animation';
 
-// Platform gradients
-const githubGradient = gradient(['#6e5494', '#4078c0']); // Purple to Blue
-const leetcodeGradient = gradient(['#ffa116', '#be4b00']); // Light orange to dark
-const codeforcesGradient = gradient(['#1f8acd', '#0056b3']); // Blue shades
 
-// Custom bar chart
+const githubGradient = gradient(['#6e5494', '#4078c0']); 
+const leetcodeGradient = gradient(['#ffa116', '#be4b00']); 
+const codeforcesGradient = gradient(['#1f8acd', '#0056b3']); 
+
 function createGridBarChart(data, title, barColor = chalk.cyan) {
   const maxValue = Math.max(...Object.values(data));
   const maxBarHeight = 10;
@@ -205,16 +204,16 @@ function displayProfileComparison(platform, profile1, profile2, username1, usern
 }
 
 // Rainbow Welcome
-async function animateWelcome(text) {
-  const animation = chalkAnimation.rainbow(text);
-  await new Promise(resolve => setTimeout(resolve, 2000));
-  animation.stop();
-}
+// async function animateWelcome(text) {
+//   const animation = chalkAnimation.rainbow(text);
+//   await new Promise(resolve => setTimeout(resolve, 2000));
+//   animation.stop();
+// }
 
 export {
   displayGitHubProfile,
   displayLeetCodeProfile,
   displayCodeforcesProfile,
   displayProfileComparison,
-  animateWelcome
+  // animateWelcome
 };

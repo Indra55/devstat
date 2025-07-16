@@ -9,7 +9,7 @@ async function loadConfig() {
     return JSON.parse(data);
   } catch (error) {
     if (error.code === 'ENOENT') {
-      return {}; // Return empty config if file doesn't exist
+      return {}; 
     }
     console.error('Error loading configuration:', error.message);
     return {};

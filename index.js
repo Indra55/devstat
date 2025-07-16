@@ -13,7 +13,7 @@ import {
 import figlet from 'figlet';
 import gradient from 'gradient-string';
 import chalk from 'chalk';
-import sleep from './modules/sleep.js'; // your sleep util
+import sleep from './modules/sleep.js';
 import { loadConfig, saveConfig } from './modules/config.js';
 
 async function printBannerLines(text) {
@@ -111,7 +111,7 @@ async function main() {
         },
       ]);
 
-      // Save usernames to config
+      
       config[comparePlatform.toLowerCase()] = username1;
       await saveConfig(config);
 
@@ -155,7 +155,6 @@ async function main() {
         },
       ]);
 
-      // Save the username to config
       config[platform.toLowerCase()] = username;
       await saveConfig(config);
 
