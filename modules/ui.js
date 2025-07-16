@@ -3,10 +3,12 @@ import gradient from 'gradient-string';
 import boxen from 'boxen';
 import chalkAnimation from 'chalk-animation';
 
-const githubGradient = gradient(['#6e5494', '#4078c0']);
-const leetcodeGradient = gradient(['#ffa116', '#be4b00']);
-const codeforcesGradient = gradient(['#1f8acd', '#0056b3']);
+// Platform gradients
+const githubGradient = gradient(['#6e5494', '#4078c0']); // Purple to Blue
+const leetcodeGradient = gradient(['#ffa116', '#be4b00']); // Light orange to dark
+const codeforcesGradient = gradient(['#1f8acd', '#0056b3']); // Blue shades
 
+// Custom bar chart
 function createGridBarChart(data, title, barColor = chalk.cyan) {
   const maxValue = Math.max(...Object.values(data));
   const maxBarHeight = 10;
@@ -44,25 +46,27 @@ function createComparisonBarChart(label, val1, val2, barChar = '█', barLength 
   const bar1 = barChar.repeat(Math.round(scale1 * barLength));
   const bar2 = barChar.repeat(Math.round(scale2 * barLength));
 
-  return `  ${label}:\n  ${chalk.blue(bar1)} ${val1}\n  ${chalk.red(bar2)} ${val2}\n`;
+  return `  ${label}:\n  ${chalk.green(bar1)} ${val1}\n  ${chalk.red(bar2)} ${val2}\n`;
 }
 
+// GitHub
 function displayGitHubProfile(profile) {
   const languageChart = createGridBarChart(profile.topLanguages, 'Top Languages', chalk.hex('#4078c0'));
+
   const content = `
 ${chalk.bold(githubGradient(`GitHub Profile: ${profile.login}`))}
 
-${chalk.gray(`Name:         ${profile.name || 'N/A'}`)}
-${chalk.gray(`Bio:          ${profile.bio || 'N/A'}`)}
-${chalk.gray(`Company:      ${profile.company || 'N/A'}`)}
-${chalk.gray(`Blog:         ${profile.blog || 'N/A'}`)}
-${chalk.gray(`Location:     ${profile.location || 'N/A'}`)}
-${chalk.gray(`Email:        ${profile.email || 'N/A'}`)}
-${chalk.gray(`Twitter:      ${profile.twitter_username ? `@${profile.twitter_username}` : 'N/A'}`)}
-${chalk.gray(`Followers:    ${profile.followers}      Following: ${profile.following}`)}
-${chalk.gray(`Public Repos: ${profile.public_repos}      Gists: ${profile.public_gists}`)}
-${chalk.gray(`Created At:   ${new Date(profile.created_at).toLocaleDateString()}`)}
-${chalk.gray(`Updated At:   ${new Date(profile.updated_at).toLocaleDateString()}`)}
+${chalk.hex('#4078c0')(`Name:         ${profile.name || 'N/A'}`)}
+${chalk.hex('#4078c0')(`Bio:          ${profile.bio || 'N/A'}`)}
+${chalk.hex('#4078c0')(`Company:      ${profile.company || 'N/A'}`)}
+${chalk.hex('#4078c0')(`Blog:         ${profile.blog || 'N/A'}`)}
+${chalk.hex('#4078c0')(`Location:     ${profile.location || 'N/A'}`)}
+${chalk.hex('#4078c0')(`Email:        ${profile.email || 'N/A'}`)}
+${chalk.hex('#4078c0')(`Twitter:      ${profile.twitter_username ? `@${profile.twitter_username}` : 'N/A'}`)}
+${chalk.hex('#4078c0')(`Followers:    ${profile.followers}      Following: ${profile.following}`)}
+${chalk.hex('#4078c0')(`Public Repos: ${profile.public_repos}      Gists: ${profile.public_gists}`)}
+${chalk.hex('#4078c0')(`Created At:   ${new Date(profile.created_at).toLocaleDateString()}`)}
+${chalk.hex('#4078c0')(`Updated At:   ${new Date(profile.updated_at).toLocaleDateString()}`)}
 ${languageChart}
 `.trim();
 
@@ -74,6 +78,7 @@ ${languageChart}
   }));
 }
 
+// LeetCode
 function displayLeetCodeProfile(profile, username) {
   const solvedData = {
     Easy: profile.easySolved,
@@ -85,11 +90,11 @@ function displayLeetCodeProfile(profile, username) {
   const content = `
 ${chalk.bold(leetcodeGradient(`LeetCode Profile: ${username}`))}
 
-${chalk.gray(`Total Solved: ${profile.totalSolved} / ${profile.totalQuestions}`)}
-${chalk.gray(`Acceptance Rate: ${profile.acceptanceRate}%`)}
-${chalk.gray(`Ranking: ${profile.ranking}`)}
-${chalk.gray(`Contribution Points: ${profile.contributionPoints}`)}
-${chalk.gray(`Reputation: ${profile.reputation}`)}
+${chalk.hex('#be4b00')(`Total Solved: ${profile.totalSolved} / ${profile.totalQuestions}`)}
+${chalk.hex('#be4b00')(`Acceptance Rate: ${profile.acceptanceRate}%`)}
+${chalk.hex('#be4b00')(`Ranking: ${profile.ranking}`)}
+${chalk.hex('#be4b00')(`Contribution Points: ${profile.contributionPoints}`)}
+${chalk.hex('#be4b00')(`Reputation: ${profile.reputation}`)}
 ${solvedChart}
 `.trim();
 
@@ -101,21 +106,22 @@ ${solvedChart}
   }));
 }
 
+// Codeforces
 function displayCodeforcesProfile(profile) {
   const content = `
 ${chalk.bold(codeforcesGradient(`Codeforces Profile: ${profile.handle}`))}
 
-${chalk.gray(`Rating:       ${profile.rating || 'N/A'}   Max Rating: ${profile.maxRating || 'N/A'}`)}
-${chalk.gray(`Rank:         ${profile.rank || 'N/A'}     Max Rank: ${profile.maxRank || 'N/A'}`)}
-${chalk.gray(`Contribution: ${profile.contribution || 'N/A'}`)}
-${chalk.gray(`Friends:      ${profile.friends || 'N/A'}`)}
-${chalk.gray(`Organization: ${profile.organization || 'N/A'}`)}
-${chalk.gray(`Country:      ${profile.country || 'N/A'}`)}
-${chalk.gray(`City:         ${profile.city || 'N/A'}`)}
-${chalk.gray(`Email:        ${profile.email || 'N/A'}`)}
-${chalk.gray(`Name:         ${(profile.firstName || '') + ' ' + (profile.lastName || '')}`)}
-${chalk.gray(`Last Online:  ${profile.lastOnlineTimeSeconds ? new Date(profile.lastOnlineTimeSeconds * 1000).toLocaleString() : 'N/A'}`)}
-${chalk.gray(`Registered:   ${profile.registrationTimeSeconds ? new Date(profile.registrationTimeSeconds * 1000).toLocaleDateString() : 'N/A'}`)}
+${chalk.hex('#1f8acd')(`Rating:       ${profile.rating || 'N/A'}   Max Rating: ${profile.maxRating || 'N/A'}`)}
+${chalk.hex('#1f8acd')(`Rank:         ${profile.rank || 'N/A'}     Max Rank: ${profile.maxRank || 'N/A'}`)}
+${chalk.hex('#1f8acd')(`Contribution: ${profile.contribution || 'N/A'}`)}
+${chalk.hex('#1f8acd')(`Friends:      ${profile.friends || 'N/A'}`)}
+${chalk.hex('#1f8acd')(`Organization: ${profile.organization || 'N/A'}`)}
+${chalk.hex('#1f8acd')(`Country:      ${profile.country || 'N/A'}`)}
+${chalk.hex('#1f8acd')(`City:         ${profile.city || 'N/A'}`)}
+${chalk.hex('#1f8acd')(`Email:        ${profile.email || 'N/A'}`)}
+${chalk.hex('#1f8acd')(`Name:         ${(profile.firstName || '') + ' ' + (profile.lastName || '')}`)}
+${chalk.hex('#1f8acd')(`Last Online:  ${profile.lastOnlineTimeSeconds ? new Date(profile.lastOnlineTimeSeconds * 1000).toLocaleString() : 'N/A'}`)}
+${chalk.hex('#1f8acd')(`Registered:   ${profile.registrationTimeSeconds ? new Date(profile.registrationTimeSeconds * 1000).toLocaleDateString() : 'N/A'}`)}
 `.trim();
 
   console.log(boxen(content, {
@@ -126,6 +132,7 @@ ${chalk.gray(`Registered:   ${profile.registrationTimeSeconds ? new Date(profile
   }));
 }
 
+// Comparison View
 function displayProfileComparison(platform, profile1, profile2, username1, username2) {
   let content = `\n${chalk.bold(gradient(['#FF0000', '#0000FF'])(`${platform} Profile Comparison`))}\n\n`;
 
@@ -174,7 +181,7 @@ function displayProfileComparison(platform, profile1, profile2, username1, usern
       content += getComparisonLine('Contribution Points:', profile1.contributionPoints, profile2.contributionPoints) + '\n';
       content += getComparisonLine('Reputation:', profile1.reputation, profile2.reputation) + '\n';
       content += createComparisonBarChart('Total Solved', profile1.totalSolved, profile2.totalSolved);
-      content += createComparisonBarChart('Ranking', profile2.ranking, profile1.ranking); // Lower rank is better
+      content += createComparisonBarChart('Ranking', profile2.ranking, profile1.ranking);
       break;
 
     case 'Codeforces':
@@ -197,6 +204,7 @@ function displayProfileComparison(platform, profile1, profile2, username1, usern
   }));
 }
 
+// Rainbow Welcome
 async function animateWelcome(text) {
   const animation = chalkAnimation.rainbow(text);
   await new Promise(resolve => setTimeout(resolve, 2000));
