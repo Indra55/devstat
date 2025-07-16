@@ -1,5 +1,8 @@
 # 📊 devstat: The Ultimate Coding Profile CLI
 
+![cli-preview](media/cli-preview.png)
+*The devstat CLI mascot and branding*
+
 > "Know thy code. Know thyself."
 
 ---
