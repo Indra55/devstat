@@ -36,7 +36,8 @@
 
 ## 🎬 Demo
 
-A quick video demo is included in [`media/devstat-demo.mp4`](media/devstat-demo.mp4). Open it in your favorite video player to see devstat in action!
+A quick video demo
+![devstat demo](media/devstat-demo-gif.gif)
 
 ---
 
